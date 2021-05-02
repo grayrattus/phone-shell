@@ -2,4 +2,6 @@ mkdir ~/.config/nvim
 ln -n dnvim.vim ~/.config/nvim/dnvim.vim
 zsh generate-emojis-file.sh
 cp .profile ~/.dnvim-profile
-echo "source ~/.dnvim-profile" >> ~/.zshrc
+if ! grep -q dnvim-profile "~/.zshrc"; then
+	echo "source ~/.dnvim-profile" >> ~/.zshrc
+fi
