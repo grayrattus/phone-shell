@@ -22,7 +22,7 @@ function! DoneFun(number)
 		exe "normal! a" . EmojiFun("grinning-face") . "\<Esc>"
 	endif
 	" Currently a really dirty fix. There is something wrong with emoji
-	exe "normal! p2k3J2lxi "
+	exe "normal! kJ2lp0E3lr "
 endfunction!
 
 :command! -nargs=1 Emoji :call EmojiFun(<q-args>)
