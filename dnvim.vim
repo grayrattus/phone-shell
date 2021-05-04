@@ -25,5 +25,26 @@ function! DoneFun(number)
 	exe "normal! kJ2lp0E3lr "
 endfunction!
 
+function! DiaryFun(emoji)
+	exe "normal! 0d$"
+	exe "normal! a" . system("date +\%D\#\%T") . "\<Esc>"
+	if a:emoji == "cat"
+		exe "normal! a" . EmojiFun("cat") . "\<Esc>"
+	elseif a:emoji == "cycle"
+		exe "normal! a" . EmojiFun("bicycle") . "\<Esc>"
+	elseif a:emoji == "cook"
+		exe "normal! a" . EmojiFun("fork-and-knife-with-plate") . "\<Esc>"
+	elseif a:emoji == "program"
+		exe "normal! a" . EmojiFun("desktop-computer") . "\<Esc>"
+	elseif a:emoji == "uni"
+		exe "normal! a" . EmojiFun("lab-coat") . "\<Esc>"
+	elseif a:emoji == "love"
+		exe "normal! a" . EmojiFun("red-heart") . "\<Esc>"
+	endif
+	" Currently a really dirty fix. There is something wrong with emoji
+	exe "normal! kJ2lp0E3lr "
+endfunction!
+
 :command! -nargs=1 Emoji :call EmojiFun(<q-args>)
+:command! -nargs=1 Diary :call DiaryFun(<q-args>)
 :command! -nargs=1 Done :call DoneFun(<q-args>)
