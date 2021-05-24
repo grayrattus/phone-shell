@@ -40,6 +40,8 @@ function! DiaryFun(emoji)
 		exe "normal! a" . EmojiFun("lab-coat") . "\<Esc>"
 	elseif a:emoji == "love"
 		exe "normal! a" . EmojiFun("red-heart") . "\<Esc>"
+	elseif a:emoji == "duo"
+		exe "normal! a" . EmojiFun("rooster") . "\<Esc>"
 	endif
 	" Currently a really dirty fix. There is something wrong with emoji
 	exe "normal! kJ2lp0E3lr "
