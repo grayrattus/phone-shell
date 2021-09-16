@@ -65,10 +65,11 @@ prevColumnValues=""
 prevColums="$columnValues"
 colors=$(echo $1 | grep -Eo 'red|green|yellow|white|orange|blue')
 colorIndex=1
-labels=$(echo $1 | grep -Eo '(,[a-z]+;)+' | grep -Eo '[a-z]') ;
+labels=$(echo $1 | grep -Eo '(,[1-9]+;)+' | grep -Eo '[1-9]') ;
 labelIndex=1
 for j in $(echo "$prevColums" | xargs); do
 	label=$(echo $labels | sed -E 's/ /\n/g' | head -n $labelIndex | tail -1)
+
 	echo -n $label
 	for k in $(echo "$j" | xargs -d ';'); do
 		echo -n ' '
@@ -88,7 +89,7 @@ for i in $(seq 1 2 "$maxValue"); do
 			then 
 				if [ $newValue -lt 0 ]; 
 				then
-					colorStdout $color; echo -n "\'"
+					colorStdout $color; echo -n " "
 				else
 					colorStdout $color; echo -n ":"
 				fi

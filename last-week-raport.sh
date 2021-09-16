@@ -10,21 +10,23 @@ cat $1 | grep -E '^([0-6]{2})/[0-6]{2}' | cut -d ' ' -f 1,2 | sort -k 4 -k 1 -k 
 do
 	if [ $dayIndex -gt 7 ];
 	then
-		IFS=";"
 		elements=""
 		index=1;
-		for i in $diaryEntriesFromWeek; do
+		parts=(${(s/;/)diaryEntriesFromWeek})
+		for i in $parts; do
 			for j in 😀 😏 😐 🙁 😭; do
 				# Fix bug here
-				elements="$elements $(echo -n $(echo $i | grep -o $j | wc -l)),white"
+				color=$(echo $j | sed 's/😀/blue/g' | sed 's/😏/green/g' | sed 's/😐/yellow/g' | sed 's/🙁/orange/g' |   sed 's/😭/red/g')
+				elements="$elements $(echo -n $(echo $i | grep -o $j | wc -l)),$color,"
+
 			done
+			elements=$(echo $elements | sed 's/,$//g' | sed 's/ //g')
 			elements="$elements,$index;"
 			index=$(echo "$index + 1" | bc)
 			# elements=$(echo "$(echo $i | sed 's/,/\n/g' | wc -l) - 1" | bc )
-			# echo $i
 		done
 
-		echo $elements
+		./utils/raport.sh $elements
 		# echo $diaryEntriesFromWeek
 		# number,color,number,color,label;number,color,number,color,label
 		break
