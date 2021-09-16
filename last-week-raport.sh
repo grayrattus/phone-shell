@@ -3,11 +3,11 @@
 # $1 - file to generate raport from
 
 dayIndex=1;
-prevDateIndex=$(cat $1 | grep -E '^([0-6]{2})/[0-6]{2}' | cut -d ' ' -f 1,2 | sort -k 4 -k 1 -k 2 -r | cut -d '/' -f 2 | head -n 1);
+prevDateIndex=$(cat $1 | grep -E '^([0-9]{2})/[0-9]{2}' | cut -d ' ' -f 1,2 | sort -k 4 -k 1 -k 2 -r | cut -d '/' -f 2 | head -n 1);
 diaryEntriesFromWeek=""
 
 days=(q w e \r t y u);
-cat $1 | grep -E '^([0-6]{2})/[0-6]{2}' | cut -d ' ' -f 1,2 | sort -k 4 -k 1 -k 2 -r | while read day
+cat $1 | grep -E '^([0-9]{2})/[0-9]{2}' | cut -d ' ' -f 1,2 | sort -k 4 -k 1 -k 2 -r | while read day
 do
 	if [ $dayIndex -gt 7 ];
 	then
@@ -38,7 +38,7 @@ do
 	then
 		diaryEntriesFromWeek="$diaryEntriesFromWeek $day,";
 	else
-		diaryEntriesFromWeek="$diaryEntriesFromWeek, $day;";
+		diaryEntriesFromWeek="$diaryEntriesFromWeek;$day";
 		prevDateIndex=$dateIndex;
 		dayIndex=$(echo "$dayIndex + 1" | bc);
 	fi
