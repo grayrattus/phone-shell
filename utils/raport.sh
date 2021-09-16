@@ -1,4 +1,4 @@
-#/bin/sh
+#/bin/zsh
 
 # Arguments
 # number,color,number,color,label;number,color,number,color,label
@@ -67,16 +67,19 @@ colors=$(echo $1 | grep -Eo 'red|green|yellow|white|orange|blue')
 colorIndex=1
 labels=$(echo $1 | grep -Eo '(,[1-9]+;)+' | grep -Eo '[1-9]') ;
 labelIndex=1
-for j in $(echo "$prevColums" | xargs); do
-	label=$(echo $labels | sed -E 's/ /\n/g' | head -n $labelIndex | tail -1)
 
+parts=(${(s/;/)@})
+
+for j in $parts; do
+	numberOfComas=$(echo "($(echo $j | grep -o ',' | wc -l) / 2) - 1" | bc)
+	label=$(echo $j | grep -o '[a-z]$')
 	echo -n $label
-	for k in $(echo "$j" | xargs -d ';'); do
+	for i in $(seq 1 $numberOfComas); do
 		echo -n ' '
 	done
-	labelIndex=$(echo "$labelIndex + 1" | bc)
 done
 echo
+
 
 for i in $(seq 1 2 "$maxValue"); do
 	for j in $(echo "$prevColums" | xargs); do
@@ -89,11 +92,13 @@ for i in $(seq 1 2 "$maxValue"); do
 			then 
 				if [ $newValue -lt 0 ]; 
 				then
-					colorStdout $color; echo -n " "
+					colorStdout $color; echo -n \'
+					newColumns="$newColumns 0"
+					break
 				else
 					colorStdout $color; echo -n ":"
+					newColumns="$newColumns $newValue"
 				fi
-				newColumns="$newColumns $newValue"
 			else 
 				echo -n " "
 				newColumns="$newColumns $k"
