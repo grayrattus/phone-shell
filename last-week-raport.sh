@@ -9,7 +9,7 @@ diaryEntriesFromWeek=""
 days=(q w e \r t y u);
 cat $1 | grep -E '^([0-9]{2})/[0-9]{2}' | cut -d ' ' -f 1,2 | sort -k 4 -k 1 -k 2 -r | while read day
 do
-	if [ $dayIndex -gt 7 ];
+	if [[ "$dayIndex" -gt 7 ]];
 	then
 		elements=""
 		index=1;
