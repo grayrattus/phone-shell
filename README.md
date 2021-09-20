@@ -61,6 +61,22 @@ There are 2 commands that are most important
 `:Diary` - allows you to finish entry with diary emoji and current date. You can add your own by editing `dvim.vim`. Use it like `Diary cook 2` or `Diary program 1` where last number is the emoji.
 `:Done` - simple mood tracker. Use it like `Done 1` or `Done 2`. This will add emoji with current date. You can edit emoji and behavior in `dvim.vim`
 
+# Encryption
+
+Encryption of files is made with existing VIM encryption functionality.
+
+Steps to encrypt your diary:
+
+- make backup before first encryption
+- `dnvim name_of_your_file`
+- Type `:X` that will give you prompt for your private key. Add your key here and remember it!
+- Write file with `:w` 
+
+Now whenever you open your file with VIM you will be asked for password. What a time to be alive!
+
+If you want to read more about  it check this [link ](http://vimdoc.sourceforge.net/htmldoc/editing.html#encryption)
+
+
 # Other interesting stuff
 
 `last-week-raport.sh` - alows you to generate ASCII chart from last 7 days of entries.
@@ -71,13 +87,14 @@ Usage:
 
 
 TODO:
-- add gpg encryption for file
 - add command that will sort entries in diary
 - find out why chart is not produces on termux even though everything works on desktop
 
 
 DONE: 
 ```
+09/20/21#21:52:11 😀 - add gpg encryption for file
+	I found something even better. VIM supports encryption with `:X` command!
 09/20/21#20:52:11 😏 - change API fror diary so it's possible to add mood + diary entry
 09/16/21#21:59:33 😏 - add command that will use raport script to generate raport from last 1 week of diary
 09/08/21#21:12:02 😐 - add chart for days
