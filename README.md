@@ -58,8 +58,8 @@ Next you can use command `dnvim` to open vim with configuration that allows you 
 
 There are 2 commands that are most important
 
-`:Diary` - allows you to finish entry with diary emoji and current date. You can add your own by editing `dnvim.vim`
-`:Done` - simple mood tracker. Use it like `Diary 1` or `Diary 2`. This will add emoji with current date. You can edit emoji and behavior in `dnvim.vim`
+`:Diary` - allows you to finish entry with diary emoji and current date. You can add your own by editing `dnvim.vim`. Use it like `Diary cook 2` or `Diary program 1` where last number is the emoji.
+`:Done` - simple mood tracker. Use it like `Done 1` or `Done 2`. This will add emoji with current date. You can edit emoji and behavior in `dnvim.vim`
 
 # Other interesting stuff
 
@@ -78,6 +78,7 @@ TODO:
 
 DONE: 
 ```
+09/20/21#20:52:11 😏 - change API fror diary so it's possible to add mood + diary entry
 09/16/21#21:59:33 😏 - add command that will use raport script to generate raport from last 1 week of diary
 09/08/21#21:12:02 😐 - add chart for days
 	In the end I simplified this a bit but it sill works fine.

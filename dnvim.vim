@@ -5,9 +5,7 @@ function! EmojiFun(emojiName)
 	exe "normal! a" . result . "\<Esc>"
 endfunction!
 
-function! DoneFun(number)
-	exe "normal! 0d$"
-	exe "normal! a" . system("date +\%D\#\%T") . "\<Esc>"
+function! _DoneWithoutDateFun(number)
 	if a:number == "1"
 		exe "normal! a" . EmojiFun("grinning-face") . "\<Esc>"
 	elseif a:number == 2
@@ -21,13 +19,20 @@ function! DoneFun(number)
 	elseif a:number == 6
 		exe "normal! a" . EmojiFun("grinning-face") . "\<Esc>"
 	endif
-	" Currently a really dirty fix. There is something wrong with emoji
-	exe "normal! kJ2lp0E3lr "
 endfunction!
 
-function! DiaryFun(emoji)
+function! DoneFun(number)
 	exe "normal! 0d$"
 	exe "normal! a" . system("date +\%D\#\%T") . "\<Esc>"
+	exe "normal! a" . _DoneWithoutDateFun(a:number) . "\<Esc>"
+	" Currently a really dirty fix. There is something wrong with emoji
+	exe "normal! kJ2lp0E3lr $x"
+endfunction!
+
+function! DiaryFun(emoji, number)
+	exe "normal! 0d$"
+	exe "normal! a" . system("date +\%D\#\%T") . "\<Esc>"
+	exe "normal! i" . _DoneWithoutDateFun(a:number) . "\<Esc>"
 	if a:emoji == "cat"
 		exe "normal! a" . EmojiFun("cat") . "\<Esc>"
 	elseif a:emoji == "cycle"
@@ -40,13 +45,11 @@ function! DiaryFun(emoji)
 		exe "normal! a" . EmojiFun("lab-coat") . "\<Esc>"
 	elseif a:emoji == "love"
 		exe "normal! a" . EmojiFun("red-heart") . "\<Esc>"
-	elseif a:emoji == "duo"
-		exe "normal! a" . EmojiFun("rooster") . "\<Esc>"
 	endif
 	" Currently a really dirty fix. There is something wrong with emoji
-	exe "normal! kJ2lp0E3lr "
+	exe "normal! kJ2lp0E3lr $xxx0Ellpa "
 endfunction!
 
 :command! -nargs=1 Emoji :call EmojiFun(<q-args>)
-:command! -nargs=1 Diary :call DiaryFun(<q-args>)
+:command! -nargs=* Diary :call DiaryFun(<f-args>)
 :command! -nargs=1 Done :call DoneFun(<q-args>)
