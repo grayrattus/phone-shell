@@ -1,2 +1,2 @@
-alias dnvim='nvim -u ~/.config/nvim/dnvim.vim'
+alias dvim='vim -u ~/.config/vim/dvim.vim'
 export EMOJI_FILE=~/.config/emoji/emoji.csv

@@ -1,5 +1,5 @@
-mkdir ~/.config/nvim
-cp dnvim.vim ~/.config/nvim/dnvim.vim
+mkdir ~/.config/vim
+cp dvim.vim ~/.config/vim/dvim.vim
 zsh generate-emojis-file.sh
 chmod +x emoji.sh
 phoneTermuxDirectory="/data/data/com.termux/files/usr/bin"
@@ -9,7 +9,7 @@ if [ -d "$phoneTermuxDirectory" ]; then
 else 
 	cp emoji.sh /usr/local/bin/emoji
 fi
-cp .profile ~/.dnvim-profile
+cp .profile ~/.dvim-profile
 if ! grep -q dnvim-profile ~/.zshrc; then
-	echo "source ~/.dnvim-profile" >> ~/.zshrc
+	echo "source ~/.dvim-profile" >> ~/.zshrc
 fi
