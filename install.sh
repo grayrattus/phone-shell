@@ -10,6 +10,6 @@ else
 	cp emoji.sh /usr/local/bin/emoji
 fi
 cp .profile ~/.dvim-profile
-if ! grep -q dnvim-profile ~/.zshrc; then
+if ! grep -q dvim-profile ~/.zshrc; then
 	echo "source ~/.dvim-profile" >> ~/.zshrc
 fi

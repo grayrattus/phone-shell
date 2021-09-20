@@ -3,7 +3,7 @@
 I got impressed by Daylio application that allows you to check your daily mood. The problem is that soon I'll
 move to some Linux phone and I won't be able to use it anymore.
 
-That's why I designed this `dnvim` that allows you to do similar mood tracking inside VIM.
+That's why I designed this `dvim` that allows you to do similar mood tracking inside VIM.
 
 # Format description
 ```
@@ -49,17 +49,17 @@ So format is made of 3 parts:
 - calendar generated with `r !cal`
 - history of all old entries
 
-# How to use `dnvim`
+# How to use `dvim`
 
 First you need to install it in Termux on Linux machine by `sh install.sh`.
 Most of scripts are written in `zsh` as this was the easiest way to add emoji support in Termux.
 
-Next you can use command `dnvim` to open vim with configuration that allows you to add diary entries.
+Next you can use command `dvim` to open vim with configuration that allows you to add diary entries.
 
 There are 2 commands that are most important
 
-`:Diary` - allows you to finish entry with diary emoji and current date. You can add your own by editing `dnvim.vim`. Use it like `Diary cook 2` or `Diary program 1` where last number is the emoji.
-`:Done` - simple mood tracker. Use it like `Done 1` or `Done 2`. This will add emoji with current date. You can edit emoji and behavior in `dnvim.vim`
+`:Diary` - allows you to finish entry with diary emoji and current date. You can add your own by editing `dvim.vim`. Use it like `Diary cook 2` or `Diary program 1` where last number is the emoji.
+`:Done` - simple mood tracker. Use it like `Done 1` or `Done 2`. This will add emoji with current date. You can edit emoji and behavior in `dvim.vim`
 
 # Other interesting stuff
 
